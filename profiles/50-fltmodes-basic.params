@@ -1,0 +1,32 @@
+# ##  CHECK THE MODE CHANNEL FIRST.  ##
+#
+# If channel 5 has no travel -- no switch assigned on the transmitter -- the
+# aircraft is not "stuck without mode switching", it is locked to whichever
+# slot the channel's resting PWM selects. On this airframe RC5 sat at 1556,
+# which ArduCopter's readSwitch() maps to slot 4. Apply this profile in that
+# state and you are locked in ALT_HOLD, which is a worse first-flight mode than
+# STABILIZE and needs a healthy barometer.
+#
+# Assign a switch to channel 5, run calibrate_radio.py --write, and confirm the
+# mode name changes in MAVProxy as you flick it. Then apply this.
+#
+# A safe six-position flight mode set.
+#
+# ArduCopter 3.2.1 mode numbers:
+#   0 STABILIZE   1 ACRO      2 ALT_HOLD   3 AUTO     4 GUIDED   5 LOITER
+#   6 RTL         7 CIRCLE    9 LAND      11 DRIFT   13 SPORT   16 POSHOLD
+#
+# This layout suits a three-position switch driving the six slots in pairs:
+# manual, altitude-assisted, then position-hold with RTL on the last notch.
+# Adjust to match how your transmitter actually maps its switch -- read the
+# live mode name in MAVProxy's prompt while you flick it, and set these to
+# match what you want each detent to do.
+#
+# RTL in at least one position is the point. Without it there is no way to
+# hand control back to the aircraft when something goes wrong.
+FLTMODE1 0
+FLTMODE2 0
+FLTMODE3 2
+FLTMODE4 2
+FLTMODE5 5
+FLTMODE6 6

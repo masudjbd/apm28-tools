@@ -1,0 +1,25 @@
+# Three-position switch, for an aircraft whose COMPASS IS NOT YET CALIBRATED.
+#
+# Same as 51-fltmodes-3pos but with LAND in place of RTL.
+#
+# Why: RTL needs a trustworthy heading and position. It flies a compass bearing
+# home. With an uncalibrated compass -- offsets still belonging to the internal
+# sensor, orientation never verified -- RTL will confidently fly the wrong way,
+# and it does that at altitude, away from you, with no warning.
+#
+# LAND needs neither. It descends where it is, on the barometer alone. It is a
+# genuine recovery mode with none of the dependencies, which makes it the right
+# thing to have on the switch until the compass work is done.
+#
+#   slot 1  STABILIZE  manual
+#   slot 4  ALT_HOLD   holds height
+#   slot 6  LAND       put it down, here, now
+#
+# After the compass is calibrated and verified outdoors, switch to
+# 51-fltmodes-3pos to get RTL back.
+FLTMODE1 0
+FLTMODE2 0
+FLTMODE3 2
+FLTMODE4 2
+FLTMODE5 9
+FLTMODE6 9

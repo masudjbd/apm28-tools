@@ -1,0 +1,5 @@
+# Full first-flight logging. LOG_BITMASK 830 was a LOWERED value; 894 adds the
+# bits that make a drift or oscillation diagnosable after the fact (IMU, RCIN,
+# RCOUT, ATTITUDE_FAST). Put it back to 830 once the aircraft is trimmed and
+# flying, since the APM 2.8's dataflash is small and 894 fills it faster.
+LOG_BITMASK 894

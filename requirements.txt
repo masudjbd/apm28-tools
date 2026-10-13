@@ -1,0 +1,18 @@
+pymavlink>=2.4.42
+pyserial>=3.5
+numpy>=1.24
+# MAVProxy is the ground station that actually speaks MAVLink v1.
+# Pure Python, installs into the venv -- no Gatekeeper, no Rosetta, no app bundle.
+MAVProxy>=1.8.71
+# MAVProxy imports `future` in its readline wrapper but does not declare it
+# as a dependency, so a plain `pip install MAVProxy` produces a mavproxy.py
+# that dies on launch with ModuleNotFoundError. Verified against 1.8.74.
+future>=1.0.0
+# Same story on macOS specifically: MAVProxy's rline.py does
+#     if platform.system() == 'Darwin': import gnureadline as readline
+# and never declares it. Undeclared deps like this are why gcs.sh does an
+# import preflight instead of letting you meet them one traceback at a time.
+# A prebuilt wheel exists for cp314/arm64, so this does not compile anything.
+gnureadline>=8.0; sys_platform == "darwin"
+# Static checking. Not needed to fly; needed to trust an edit.
+pyflakes>=3.0

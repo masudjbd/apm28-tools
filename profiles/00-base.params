@@ -1,0 +1,43 @@
+# APM 2.8 / ArduCopter 3.2.1 -- baseline sanity settings.
+# Format: NAME VALUE, one per line. Mission-Planner compatible.
+#
+# Conservative on purpose. These are first-flight numbers, not tuned ones.
+
+# --- estimator / IMU -------------------------------------------------------
+AHRS_ORIENTATION 0
+# 20 Hz IMU filter. The stock 42 Hz lets frame vibration through into the
+# accelerometers, and on a soft APM 2.8 mount that shows up as altitude drift
+# and climb-on-yaw. Lower is the safer default on this hardware.
+INS_MPU6K_FILTER 20
+
+# --- compass ---------------------------------------------------------------
+MAG_ENABLE 1
+COMPASS_USE 1
+# COMPASS_LEARN off: in-flight offset learning on 3.2.1 is unreliable and will
+# quietly corrupt a good calibration.
+COMPASS_LEARN 0
+
+# --- GPS -------------------------------------------------------------------
+GPS_TYPE 1
+GPS_HDOP_GOOD 200
+
+# --- arming ----------------------------------------------------------------
+ARMING_CHECK 1
+MOT_SPIN_ARMED 70
+
+# --- pilot limits ----------------------------------------------------------
+ANGLE_MAX 3000
+PILOT_VELZ_MAX 250
+THR_MID 500
+
+# --- navigation ------------------------------------------------------------
+WPNAV_SPEED 500
+WPNAV_SPEED_UP 250
+WPNAV_SPEED_DN 150
+RTL_ALT 1500
+RTL_ALT_FINAL 0
+RTL_LOIT_TIME 5000
+LAND_SPEED 50
+
+# --- logging ---------------------------------------------------------------
+LOG_BITMASK 830

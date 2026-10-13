@@ -1,0 +1,4 @@
+# Quad in X configuration. FRAME 0 = plus, 1 = X, 2 = V, 3 = H.
+# Must match how the arms are physically laid out relative to the arrow on the
+# board, not how it looks in a photo.
+FRAME 1

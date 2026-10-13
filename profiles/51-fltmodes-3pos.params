@@ -1,0 +1,24 @@
+# Flight modes for a THREE-position switch (FS-i6 SwC on channel 5).
+#
+# A 3-position switch does not reach six slots. At the usual 1000/1500/2000 us
+# it lands in slots 1, 4 and 6 -- so those are the only three that matter, and
+# the rest are filled with the same value as their neighbour so that PWM drift
+# across a boundary changes nothing.
+#
+# CONFIRM with ./mode_monitor.py before trusting this. Endpoint and subtrim
+# settings on the transmitter move the actual PWM, and if your switch lands in
+# different slots this mapping is wrong for your radio.
+#
+#   slot 1  STABILIZE  manual, always available, what you learn on
+#   slot 4  ALT_HOLD   holds height, still manual in the horizontal
+#   slot 6  RTL        the recovery mode -- the reason a 3-position switch is
+#                      worth having at all
+#
+# Once GPS is trusted and mounted on a mast, LOITER (5) is a reasonable swap
+# for ALT_HOLD in the middle position.
+FLTMODE1 0
+FLTMODE2 0
+FLTMODE3 2
+FLTMODE4 2
+FLTMODE5 6
+FLTMODE6 6

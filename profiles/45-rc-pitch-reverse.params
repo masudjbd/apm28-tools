@@ -1,0 +1,18 @@
+# Pitch channel reversal for the FS-i6 on this airframe.
+#
+# Measured 2026-09-02 by check_stick_sense.py, and confirmed in the air first:
+# pushing the pitch stick forward flew the aircraft BACKWARD.
+#
+#   pitch stick fully forward -> ch2 1777, trim 1481, so +296 us
+#   RC2_REV +1                -> control_in POSITIVE
+#   positive pitch            -> NOSE UP -> flies BACKWARD
+#
+# The FS-i6's elevator output runs opposite to what ArduPilot expects. Nothing
+# in preflight.py can see this: a reversed channel and a correct one produce
+# identical PWM ranges, and self-levelling comes from the IMU so the aircraft
+# still hovers perfectly. Only the SIGN relative to trim separates them.
+#
+# Roll measured correct in the same run (+313 us -> flies right), which is what
+# rules out a board mounted 180 degrees round -- that reverses BOTH axes and is
+# fixed with AHRS_ORIENTATION, never by reversing channels.
+RC2_REV -1

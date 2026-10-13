@@ -1,0 +1,14 @@
+# Failsafes for a 3S pack. Adjust FS_BATT_VOLTAGE for other cell counts
+# (roughly 3.5 V per cell: 3S = 10.5, 4S = 14.0, 6S = 21.0).
+#
+# FS_THR_VALUE must sit above the receiver's no-signal output but below the
+# lowest value the throttle stick produces in normal flight. Confirm against
+# the RC3_MIN that ./calibrate_radio.py measures -- a value inside the live
+# stick range will trigger a failsafe in flight.
+FS_THR_ENABLE 1
+FS_THR_VALUE 975
+FS_BATT_ENABLE 2
+FS_BATT_VOLTAGE 10.5
+FS_BATT_MAH 0
+FS_GPS_ENABLE 1
+FS_GCS_ENABLE 0

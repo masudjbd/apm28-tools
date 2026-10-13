@@ -1,0 +1,20 @@
+.venv/
+logs/*.json
+logs/*.csv
+__pycache__/
+*.pyc
+
+# Per-airframe choices that are not in the firmware parameters.
+airframe.local.json
+
+# Personal data, local machine state and archives - keep out of the public repo.
+logs/*
+!logs/*.params
+_claude-sync/
+_to_delete/
+.stfolder/
+.stignore
+.DS_Store
+*.tlog
+*.tlog.raw
+*.code-workspace

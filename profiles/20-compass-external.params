@@ -1,0 +1,12 @@
+# External compass on a GPS mast.
+#
+# HARDWARE PREREQUISITE: the APM 2.8's onboard magnetometer must be
+# disconnected first by cutting the trace on the solder jumper next to the I2C
+# port. Setting COMPASS_EXTERNAL alone does not do this -- both magnetometers
+# stay on the same I2C bus and the heading is garbage.
+#
+# COMPASS_ORIENT is deliberately NOT set here. Run ./solve_compass_orient.py
+# to measure it; guessing ROTATION_ROLL_180 is how most people get this wrong.
+COMPASS_EXTERNAL 1
+COMPASS_USE 1
+COMPASS_LEARN 0
